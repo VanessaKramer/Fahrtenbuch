@@ -2,6 +2,13 @@ package de.hdm.kramer.fahrtenbuch.shared.bo;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
+/**
+ * Ein Nutzer ggf. Fahrer zeichnet sich durch einen Vornamen, Nachnamen, Emailadresse, 
+ * einem Fahrtenbuch und einem PKW aus.  
+ * 
+ * @author Vanessa Kramer
+ */
+
 
 public class Nutzer extends BusinessObject implements IsSerializable {
 	

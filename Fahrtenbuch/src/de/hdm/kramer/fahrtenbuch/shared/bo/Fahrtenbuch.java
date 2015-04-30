@@ -4,7 +4,14 @@ import java.util.ArrayList;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
-// NOCH ZU BEARBEITEN
+/**
+ * Die Fahrtenbuchklasse ist die Darstellungsfläche von jenem Nutzer. 
+ * Auf dem Fahrtenbuch werden die dokumentierten Fahrten des Nutzers dargestellt. 
+ * Ein Fahrtenbuch hat somit einen Nutzer(Betreiber) und eine Liste mit Fahrten.
+ * 
+ * @author Vanessa Kramer
+ *
+ */
 
 public class Fahrtenbuch extends BusinessObject implements IsSerializable{
 	
@@ -15,6 +22,7 @@ public class Fahrtenbuch extends BusinessObject implements IsSerializable{
 	 *
 	 */
 	private ArrayList<Fahrt> fahrten;
+	
 	/**
 	 * Betreiber und Inhaber des Fahrtenbuchs
 	 */
@@ -50,12 +58,15 @@ public class Fahrtenbuch extends BusinessObject implements IsSerializable{
 	}
 	
 	
-	// muss evtl. noch geändert werden
+	/**
+	 * Methode zum Auslesen aller Fahrten, welche als String zurückgegeben werden.
+	 *
+	 */
 	
 	public String getAllFahrten() {
 		String allFahrten = "";
 		for(int i= 0; i <= fahrten.size(); i++) {
-			allFahrten += "Fahrt:"+ i + fahrten + "\n";
+			allFahrten += "Fahrt:"+ i + fahrten.get(i).toString() + "\n";
 		}
 		return allFahrten;
 	}

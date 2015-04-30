@@ -1,43 +1,82 @@
 package de.hdm.kramer.fahrtenbuch.shared.bo;
 
-import java.sql.Time;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
-//
-// NOCH ZU BEARBEITEN
-//
+/**
+ * Mit dieser Klasse werden Fahrtobjekte realisiert. Eine Fahrt besteht aus einem PKW,
+ * einer Abfahrtszeit, einer Ankunftszeit, einem Abfahrtsort, einem Ankunftsort, einem Fahrtzweck
+ * einem Anfangskilometer-Stand und einem Endkilometer-Stand.
+ *
+ * @author Vanessa Kramer
+ */
 
 
 public class Fahrt extends BusinessObject implements IsSerializable, Comparable<Fahrt> {
 
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	* Der Fahrer der Fahrt
+	*/
 	private Nutzer nutzer;
 	
+	/**
+	* Der PKW der Fahrt
+	*/
 	private Pkw pkw;
 	
+	/**
+	* Das Fahrtenbuch, die einer Fahrteninstanz zugeordnet ist.
+	*/
 	private Fahrtenbuch fahrtenbuch;
 	
-	private Date datum;
+	/**
+	* Datumsformatierung mit SimpleDateFormat, um das Datum und die Uhrzeit für
+	* die Abfahrtzeit und Ankunftszeit auszugeben.
+	*/
+	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
 	
-	private Time abfahrtsZeit;
+	/**
+	 * Die Abfahrtszeit der Fahrt
+	 */
+	private Date abfahrtsZeit;
 	
-	private Time ankunftsZeit;
+	/**
+	 * Die Ankunftszeit der Fahrt
+	 */
+	private Date ankunftsZeit;
 	
+	/**
+	 * Die Abfahrtsort der Fahrt
+	 */
 	private String abfahrtsOrt;
 	
+	/**
+	 * Die Ankunftsort der Fahrt
+	 */
 	private String ankunftsOrt;
 	
+	/**
+	 * Zweck der Fahrt (z.Bsp privat, geschäftlich)
+	 */
 	private String fahrtZweck;
 	
+	/**
+	 * km-Stand zu Beginn der Fahrt
+	 */
 	private int kmStandAnfang;
 	
+	/**
+	 * km-Stand am Ende der Fahrt
+	 */
 	private int kmStandEnde;
 	
-	private int gefahreneKm;
-	
+	/**
+	 * Eindeutige Identifikation einer Fahrt
+	 */
 	private int FahrtId;
 	
 	
@@ -56,7 +95,6 @@ public class Fahrt extends BusinessObject implements IsSerializable, Comparable<
 	}
 	
 	/**
-	 * 
 	 * Auslesen des Pkws 
 	 */
 	public Pkw getPkw() {
@@ -65,14 +103,12 @@ public class Fahrt extends BusinessObject implements IsSerializable, Comparable<
 	
 	/**
 	 * Setzen des Pws
-	 * 
 	 */
 	public void setPkw(Pkw pkw) {
 		this.pkw = pkw;
 	}
 	
 	/**
-	 * 
 	 * Auslesen der Fahrtenbuch 
 	 */
 	public Fahrtenbuch getFahrtenbuch() {
@@ -81,108 +117,133 @@ public class Fahrt extends BusinessObject implements IsSerializable, Comparable<
 	
 	/**
 	 * Setzen der Fahrtenbuch
-	 * 
 	 */
 	public void setFahrtenbuch(Fahrtenbuch fahrtenbuch) {
 		this.fahrtenbuch = fahrtenbuch;
 	}
 	
 	/**
-	 * Methode zum Aulesen der Fahrt_Id
+	 * Methode zum Aulesen der FahrtId
 	 */
 	public int getFahrtId() {
 		return FahrtId;
 	}
 	
 	/**
-	 * Methode zum Setzen der Fahrt_Id
+	 * Methode zum Setzen der FahrtId
 	 */
 	public void setFahrtId(int fahrtId) {
 		this.FahrtId = fahrtId;
 	}
 	
-	
-	public Date getDate(){
-		return datum;
-	}
-	
-	public void setDate(Date datum){
-		this.datum = datum;
-	}
-	
-	public Time getAbfahrtsZeit(){
+	/**
+	 * Auslesen der Abfahrtszeit 
+	 */
+	public Date getAbfahrtsZeit(){
 		return abfahrtsZeit;
 	}
 	
-	public void setAbfahrtsZeit(Time abfahrtsZeit){
+	/**
+	 * Methode zum Setzen der Abfahrtszeit
+	 */
+	public void setAbfahrtsZeit(Date abfahrtsZeit){
 		this.abfahrtsZeit= abfahrtsZeit;
 	}
 	
-	public Time getAnkunftsZeit(){
+	/**
+	 * Auslesen der Ankunftszeit 
+	 */
+	public Date getAnkunftsZeit(){
 		return ankunftsZeit;
 	}
 	
-	public void setAnkunftsZeit(Time ankunftsZeit){
+	/**
+	 * Methode zum Setzen der Ankunftszeit
+	 */
+	public void setAnkunftsZeit(Date ankunftsZeit){
 		this.ankunftsZeit= ankunftsZeit;
 	}
 	
+	/**
+	 * Auslesen des Abfahrtsortes 
+	 */
 	public String getAbfahrtsOrt(){
 		return abfahrtsOrt;
 	}
 	
+	/**
+	 * Methode zum Setzen des Abfahrtortes
+	 */
 	public void setAbfahrtsOrt(String abfahrtsOrt){
 		this.abfahrtsOrt= abfahrtsOrt;
 	}
 	
+	/**
+	 * Auslesen des Ankunftsortes 
+	 */
 	public String getAnkunftsOrt(){
 		return ankunftsOrt;
 	}
 	
+	/**
+	 * Methode zum Setzen des Ankunftsortes
+	 */
 	public void setAnkunftsOrt(String ankunftsOrt){
 		this.ankunftsOrt= ankunftsOrt;
 	}
 	
+	/**
+	 * Auslesen des Fahrtzwecks
+	 */
 	public String getFahrtZweck(){
 		return fahrtZweck;
 	}
 	
+	/**
+	 * Methode zum Setzen des Fahrtzwecks
+	 */
 	public void setFahrtZweck(String fahrtZweck){
 		this.fahrtZweck = fahrtZweck;
 	}
 	
+	/**
+	 * Auslesen des km-Stands zu Beginn der Fahrt
+	 */
 	public int getKmStandAnfang(){
 		return kmStandAnfang;
 	}
 	
+	/**
+	 * Methode zum Setzen des km-Stands zu Beginn der Fahrt
+	 */
 	public void setKmStandAnfang(int kmStandAnfang){
 		this.kmStandAnfang = kmStandAnfang;
 	}
 	
+	/**
+	 * Auslesen des km-Stands am Ende der Fahrt
+	 */
 	public int getKmStandEnde(){
 		return kmStandEnde;
 	}
 	
+	/**
+	 * Methode zum Setzen des km-Stands am Ende der Fahrt
+	 */
 	public void setKmStandEnde(int kmStandEnde){
 		this.kmStandEnde = kmStandEnde;
 	}
 	
-	public int getGefahreneKm(){
-		return gefahreneKm;
-	}
-	
-	public void setGefahreneKm(int gefahreneKm){
-		this.gefahreneKm = gefahreneKm;
-	}
 	
 	/**
 	 * Wandelt ein Fahrtobjekt in ein Stringobjekt um. 
 	 */
 	@Override
 	public String toString() {
-		return "Erstellungszeitpunnkt" + getErstellungsZeitpunkt() + "Datum:" + getDate() + "Abfahrtszeit:" + getAbfahrtsZeit() +
-				"Ankunftszeit" + getAnkunftsZeit() + "Abfahrtsort" + getAbfahrtsOrt() + "Ankunftsort" + getAnkunftsOrt() +
-				"Fahrtzweck" + getFahrtZweck() + "km-Stand Anfang" + getKmStandAnfang() + "km-Stand Ende" + getKmStandEnde() +
-				"Gefahrene km" + getGefahreneKm();
+		return "Erstellungszeitpunkt" + getErstellungsZeitpunkt() + "Fahrer" + this.nutzer +
+				"PKW"+ this.nutzer.getPkw().getModellName() + "Abfahrtszeit" + simpleDateFormat.format(abfahrtsZeit) +
+				"Ankunftszeit" + simpleDateFormat.format(ankunftsZeit) + "Abfahrtsort" + this.abfahrtsOrt + "Ankunftsort" + this.ankunftsOrt +
+				"Fahrtzweck" + this.fahrtZweck + "km-Stand Anfang" + this.kmStandAnfang + "km-Stand Ende" + this.kmStandEnde;
 	}
 
 	
