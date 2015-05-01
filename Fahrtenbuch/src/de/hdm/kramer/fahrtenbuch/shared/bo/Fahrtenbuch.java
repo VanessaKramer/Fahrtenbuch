@@ -24,6 +24,12 @@ public class Fahrtenbuch extends BusinessObject implements IsSerializable{
 	private ArrayList<Fahrt> fahrten;
 	
 	/**
+	 * Liste für PKWs
+	 *
+	 */
+	private ArrayList<Pkw> pkws;
+	
+	/**
 	 * Betreiber und Inhaber des Fahrtenbuchs
 	 */
 	private Nutzer nutzer;
@@ -41,6 +47,20 @@ public class Fahrtenbuch extends BusinessObject implements IsSerializable{
 	 */
 	public void setFahrten(ArrayList<Fahrt> fahrten) {
 		this.fahrten = fahrten;
+	}
+	/**
+	 * Methode zum Auslesen der PKWs
+	 *
+	 */
+	public ArrayList<Pkw> getPkws() {
+		return pkws;
+	}
+	/**
+	 * Methode zum Setzen der PKWs
+	 *
+	 */
+	public void setPkws(ArrayList<Pkw> pkws) {
+		this.pkws = pkws;
 	}
 	/**
 	 * Methode zum Auslesen der Nutzer
@@ -62,7 +82,6 @@ public class Fahrtenbuch extends BusinessObject implements IsSerializable{
 	 * Methode zum Auslesen aller Fahrten, welche als String zurückgegeben werden.
 	 *
 	 */
-	
 	public String getAllFahrten() {
 		String allFahrten = "";
 		for(int i= 0; i <= fahrten.size(); i++) {
@@ -72,10 +91,23 @@ public class Fahrtenbuch extends BusinessObject implements IsSerializable{
 	}
 	
 	/**
+	 * Methode zum Auslesen aller Pkws, welche als String zurückgegeben werden.
+	 *
+	 */
+	public String getAllPkws() {
+		String allPkws = "";
+		for(int i= 0; i <= pkws.size(); i++) {
+			allPkws += "PKW:"+ i + pkws.get(i).toString() + "\n";
+		}
+		return allPkws;
+	}
+	
+	/**
 	 * Umwandlung einer Fahrtenbuchinstanz in einen String
 	 */
 	@Override
 	public String toString() {
-		return "Fahrtenbuch vom Nutzer:" + nutzer + "\n Fahrten: \n " + getAllFahrten();
+		return "Fahrtenbuch vom Nutzer:" + nutzer + "\n Fahrten: \n " + getAllFahrten() +
+				"\n Abteilungs-Fahrzeuge: \n " + getAllPkws();
 	}
 }

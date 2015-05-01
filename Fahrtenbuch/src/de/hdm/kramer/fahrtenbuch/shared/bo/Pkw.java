@@ -22,6 +22,11 @@ public class Pkw extends BusinessObject implements IsSerializable{
 	 */
 	private int baujahr;
 	
+	/**
+	* Das Fahrtenbuch, die einer Fahrteninstanz zugeordnet ist.
+	*/
+	private Fahrtenbuch fahrtenbuch;
+	
 	
 	/**
 	 * Auslesen des Modellnamens
@@ -52,10 +57,24 @@ public class Pkw extends BusinessObject implements IsSerializable{
 	}
 	
 	/**
+	 * Auslesen des Fahrtenbuchs 
+	 */
+	public Fahrtenbuch getFahrtenbuch() {
+		return fahrtenbuch;
+	}
+	
+	/**
+	 * Setzen des Fahrtenbuchs
+	 */
+	public void setFahrtenbuch(Fahrtenbuch fahrtenbuch) {
+		this.fahrtenbuch = fahrtenbuch;
+	}
+	
+	/**
 	 * Repräsentierung einer PKWinstanz als String
 	 */
 		public String toString() {
-		    return "PKW-Modell "+ this.modell + "Baujahr" + this.baujahr;
+		    return this.modell + "Baujahr" + this.baujahr;
 		  }
 
 }

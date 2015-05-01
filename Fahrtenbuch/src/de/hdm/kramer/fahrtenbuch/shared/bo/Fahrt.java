@@ -109,14 +109,14 @@ public class Fahrt extends BusinessObject implements IsSerializable, Comparable<
 	}
 	
 	/**
-	 * Auslesen der Fahrtenbuch 
+	 * Auslesen des Fahrtenbuchs 
 	 */
 	public Fahrtenbuch getFahrtenbuch() {
 		return fahrtenbuch;
 	}
 	
 	/**
-	 * Setzen der Fahrtenbuch
+	 * Setzen des Fahrtenbuchs
 	 */
 	public void setFahrtenbuch(Fahrtenbuch fahrtenbuch) {
 		this.fahrtenbuch = fahrtenbuch;
