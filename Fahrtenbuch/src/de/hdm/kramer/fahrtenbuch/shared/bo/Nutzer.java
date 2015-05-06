@@ -115,8 +115,22 @@ public class Nutzer extends BusinessObject implements IsSerializable {
 	 * Repräsentierung einer Nutzerinstanz als String
 	 */
 		public String toString() {
-		    return super.toString() + " " + this.vorname + " " + this.name+ " "+ this.email;
+		    return this.vorname + " " + this.name+ " "+ this.email;
 		  }
+
+		//Konstruktor
+		
+		public Nutzer(){
+			
+		};
+		
+	 	public Nutzer (String vorname, String nachname, String email){
+	 		this.vorname=vorname;
+	 		this.name= nachname;
+	 		this.email=email;
+	 	}
+	 	
+	 	// Für den Mapper beim Auslesen aus der Datenbank, da id und erstellungsZeitpunkt von DB vergeben werden
 
 		
 }

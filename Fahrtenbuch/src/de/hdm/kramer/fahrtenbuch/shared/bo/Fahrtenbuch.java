@@ -110,4 +110,12 @@ public class Fahrtenbuch extends BusinessObject implements IsSerializable{
 		return "Fahrtenbuch vom Nutzer:" + nutzer + "\n Fahrten: \n " + getAllFahrten() +
 				"\n Abteilungs-Fahrzeuge: \n " + getAllPkws();
 	}
+	
+	
+	//Konstruktor
+	
+	public Fahrtenbuch(){
+				
+	};
+
 }

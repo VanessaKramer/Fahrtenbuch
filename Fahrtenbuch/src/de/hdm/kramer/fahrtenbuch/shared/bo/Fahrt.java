@@ -1,6 +1,7 @@
 package de.hdm.kramer.fahrtenbuch.shared.bo;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
@@ -42,12 +43,12 @@ public class Fahrt extends BusinessObject implements IsSerializable, Comparable<
 	/**
 	 * Die Abfahrtszeit der Fahrt
 	 */
-	private Date abfahrtsZeit;
+	private Timestamp abfahrtsZeit;
 	
 	/**
 	 * Die Ankunftszeit der Fahrt
 	 */
-	private Date ankunftsZeit;
+	private Timestamp ankunftsZeit;
 	
 	/**
 	 * Die Abfahrtsort der Fahrt
@@ -139,28 +140,28 @@ public class Fahrt extends BusinessObject implements IsSerializable, Comparable<
 	/**
 	 * Auslesen der Abfahrtszeit 
 	 */
-	public Date getAbfahrtsZeit(){
+	public Timestamp getAbfahrtsZeit(){
 		return abfahrtsZeit;
 	}
 	
 	/**
 	 * Methode zum Setzen der Abfahrtszeit
 	 */
-	public void setAbfahrtsZeit(Date abfahrtsZeit){
+	public void setAbfahrtsZeit(Timestamp abfahrtsZeit){
 		this.abfahrtsZeit= abfahrtsZeit;
 	}
 	
 	/**
 	 * Auslesen der Ankunftszeit 
 	 */
-	public Date getAnkunftsZeit(){
+	public Timestamp getAnkunftsZeit(){
 		return ankunftsZeit;
 	}
 	
 	/**
 	 * Methode zum Setzen der Ankunftszeit
 	 */
-	public void setAnkunftsZeit(Date ankunftsZeit){
+	public void setAnkunftsZeit(Timestamp ankunftsZeit){
 		this.ankunftsZeit= ankunftsZeit;
 	}
 	
@@ -240,9 +241,12 @@ public class Fahrt extends BusinessObject implements IsSerializable, Comparable<
 	 */
 	@Override
 	public String toString() {
+		String abZeit = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(abfahrtsZeit);
+		String anZeit = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(ankunftsZeit);
 		return "Erstellungszeitpunkt" + getErstellungsZeitpunkt() + "Fahrer" + this.nutzer +
-				"PKW"+ this.nutzer.getPkw().getModellName() + "Abfahrtszeit" + simpleDateFormat.format(abfahrtsZeit) +
-				"Ankunftszeit" + simpleDateFormat.format(ankunftsZeit) + "Abfahrtsort" + this.abfahrtsOrt + "Ankunftsort" + this.ankunftsOrt +
+				"PKW"+ this.pkw.getModellName() + 
+				"Abfahrtszeit" + abZeit + "Ankunftszeit" + anZeit +
+				"Abfahrtsort" + this.abfahrtsOrt + "Ankunftsort" + this.ankunftsOrt +
 				"Fahrtzweck" + this.fahrtZweck + "km-Stand Anfang" + this.kmStandAnfang + "km-Stand Ende" + this.kmStandEnde;
 	}
 
@@ -264,5 +268,24 @@ public class Fahrt extends BusinessObject implements IsSerializable, Comparable<
 			return this.getErstellungsZeitpunkt().compareTo(f.getErstellungsZeitpunkt());
 			}
 		}
+	
+	//Konstruktor
+	
+	public Fahrt(){
+				
+	};
+			
+	public Fahrt (Timestamp abfahrtsZeit, Timestamp ankunftsZeit, String abfahrtsOrt, String ankunftsOrt, String fahrtZweck,
+			int kmStandAnfang, int kmStandEnde){
+		 this.abfahrtsZeit=abfahrtsZeit;
+		 this.ankunftsZeit=ankunftsZeit;
+		 this.abfahrtsOrt=abfahrtsOrt;
+		 this.ankunftsOrt=ankunftsOrt;
+		 this.fahrtZweck=fahrtZweck;
+		 this.kmStandAnfang=kmStandAnfang;
+		 this.kmStandEnde=kmStandEnde;
+	}
+		 	
+	// Für den Mapper beim Auslesen aus der Datenbank, da id und erstellungsZeitpunkt von DB vergeben werden
 	
 }

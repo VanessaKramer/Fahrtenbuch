@@ -74,7 +74,20 @@ public class Pkw extends BusinessObject implements IsSerializable{
 	 * Repräsentierung einer PKWinstanz als String
 	 */
 		public String toString() {
-		    return this.modell + "Baujahr" + this.baujahr;
+		    return this.modell + " " + "Baujahr " + this.baujahr;
 		  }
+		
+		//Konstruktor
+		
+		public Pkw(){
+					
+		};
+				
+		public Pkw (String modell, int baujahr){
+			 this.modell=modell;
+			 this.baujahr=baujahr;
+		}
+			 	
+		// Für den Mapper beim Auslesen aus der Datenbank, da id und erstellungsZeitpunkt von DB vergeben werden
 
 }
