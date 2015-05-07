@@ -72,7 +72,6 @@ public class PkwMapper {
 			    p.setErstellungsZeitpunkt(rs.getTimestamp("erstellung"));
 			    p.setModellName(rs.getString("modell"));
 			    p.setBaujahr(rs.getInt("baujahr"));
-			    p.setFahrtenbuch(FahrtenbuchMapper.fahrtenbuchMapper().getFahrtenbuchById(rs.getInt("fahrtenbuch_ID")));
 			    return p;
 			}
 		}
@@ -111,7 +110,6 @@ public class PkwMapper {
 			    p.setErstellungsZeitpunkt(rs.getTimestamp("erstellung"));
 			    p.setModellName(rs.getString("modell"));
 			    p.setBaujahr(rs.getInt("baujahr"));	 
-			    p.setFahrtenbuch(FahrtenbuchMapper.fahrtenbuchMapper().getFahrtenbuchById(rs.getInt("fahrtenbuch_ID")));
 
 				//Pkw-Objekte der ArrayList hinzufügen
 				pkwListe.add(p);
@@ -157,9 +155,9 @@ public class PkwMapper {
 		        stmt = con.createStatement();
 	
 		        // Jetzt erst erfolgt die tatsächliche Einfügeoperation
-		        stmt.executeUpdate("INSERT INTO pkw (pkw_ID, modell, baujahr, fahrtenbuch_ID) "
-		            + "VALUES (" + p.getId() + ",'"  + p.getModellName() + "','" + p.getBaujahr() + "','" +
-		        		p.getFahrtenbuch().getId() +"')");
+		        stmt.executeUpdate("INSERT INTO pkw (pkw_ID, modell, baujahr) "
+		            + "VALUES (" + p.getId() + ",'"  + p.getModellName() + "','" + p.getBaujahr() +
+		            "')");
 	      }
 	      
 	    }
