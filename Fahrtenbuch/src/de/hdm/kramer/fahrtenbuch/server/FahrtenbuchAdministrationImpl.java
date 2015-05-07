@@ -92,55 +92,58 @@ public class FahrtenbuchAdministrationImpl extends RemoteServiceServlet implemen
 	@Override
 	public Fahrtenbuch insertFahrtenbuch(Fahrtenbuch fb)
 			throws IllegalArgumentException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return fahrtenbuchMapper.insertFahrtenbuch(fb);
 	}
 	@Override
 	public Fahrtenbuch getFahrtenbuchById(int id)
 			throws IllegalArgumentException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this.fahrtenbuchMapper.getFahrtenbuchById(id);
 	}
 	@Override
 	public void insertFahrt(Fahrt f) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
+		
+		fahrtMapper.insertFahrt(f);
 		
 	}
 	@Override
 	public Fahrt updateFahrt(Fahrt f) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return fahrtMapper.updateFahrt(f);
 	}
 	@Override
 	public Fahrt getFahrtById(int id) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this.fahrtMapper.getFahrtById(id);
 	}
 	@Override
 	public ArrayList<Fahrt> getFahrtenByNutzer(int id)
 			throws IllegalArgumentException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this.fahrtMapper.getFahrtenByNutzer(id);
 	}
 	@Override
 	public void insertPkw(Pkw p) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
+		
+		pkwMapper.insertPkw(p);
 		
 	}
 	@Override
 	public void deletePkw(Pkw p) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
+		
+		pkwMapper.deletePkw(p);
 		
 	}
 	@Override
 	public Pkw getPkwById(int id) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this.pkwMapper.getPkwById(id);
 	}
 	@Override
 	public ArrayList<Pkw> getAllPkws() throws IllegalArgumentException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this.pkwMapper.getAllPkws();
 	}
 	
 	
