@@ -3,6 +3,8 @@ package de.hdm.kramer.fahrtenbuch.server.db;
 import java.sql.*;
 import java.util.ArrayList;
 
+import de.hdm.gruppe6.itprojekt.server.db.DBVerbindung;
+import de.hdm.gruppe6.itprojekt.shared.bo.User;
 import de.hdm.kramer.fahrtenbuch.shared.*;
 import de.hdm.kramer.fahrtenbuch.shared.bo.Nutzer;
 import de.hdm.kramer.fahrtenbuch.shared.bo.Fahrtenbuch;
@@ -23,14 +25,14 @@ public class NutzerMapper {
 	  * Die Klasse NutzerMapper wird nur einmal instantiiert. Man spricht hierbei
 	  * von einem sogenannten Singleton.
 	  *
-	  * Diese Variable ist durch den Bezeichner static nur einmal für
-	  * sämtliche eventuellen Instanzen dieser Klasse vorhanden. Sie speichert die
+	  * Diese Variable ist durch den Bezeichner static nur einmal fÃ¼r
+	  * sÃ¤mtliche eventuellen Instanzen dieser Klasse vorhanden. Sie speichert die
 	  * einzige Instanz dieser Klasse.
 	  */
 	 private static NutzerMapper nutzerMapper = null;
 	
 	 
-	 // Geschützter Konstruktor - verhindert die Möglichkeit, mit new neue
+	 // GeschÃ¼tzter Konstruktor - verhindert die MÃ¶glichkeit, mit new neue
 	 // Instanzen dieser Klasse zu erzeugen.
 	 
 	 protected NutzerMapper() {
@@ -66,7 +68,7 @@ public class NutzerMapper {
 			//Suche alle Felder der Nutzertabelle anhand von ID
 			ResultSet rs = stmt.executeQuery("SELECT * FROM nutzer WHERE nutzer_ID=" + id );
 
-		    //Maximal ein Rückgabewert da Id Primärschlüssel
+		    //Maximal ein RÃ¼ckgabewert da Id PrimÃ¤rschlÃ¼ssel
 			if (rs.next()) {
 		        // Ergebnis in Nutzerobjekt umwandeln
 		        Nutzer n = new Nutzer();
@@ -114,7 +116,7 @@ public class NutzerMapper {
 			    n.setName(rs.getString("name"));
 			    n.setEmail(rs.getString("email"));
 			        		        
-			    //NutzerObjekte der ArrayList hinzufügen
+			    //NutzerObjekte der ArrayList hinzufÃ¼gen
 			    nutzerListe.add(n);
 			}
 			return nutzerListe;
@@ -142,20 +144,20 @@ public class NutzerMapper {
 			Statement stmt = con.createStatement();
 
 	      /*
-	       * Zunächst schauen wir nach, welches der momentan höchste
-	       * Primärschlüsselwert ist.
+	       * ZunÃ¤chst schauen wir nach, welches der momentan hÃ¶chste
+	       * PrimÃ¤rschlÃ¼sselwert ist.
 	       */
 	      ResultSet rs = stmt.executeQuery("SELECT MAX(nutzer_ID) AS maxid "
 	          + "FROM nutzer ");
 
-	      // Wenn wir etwas zurückerhalten, kann dies nur einzeilig sein
+	      // Wenn wir etwas zurÃ¼ckerhalten, kann dies nur einzeilig sein
 	      if (rs.next()) {
-		        //n erhält um 1 höhere ID als das maximale Element in der Tabelle
+		        //n erhÃ¤lt um 1 hÃ¶here ID als das maximale Element in der Tabelle
 	    	  	maxid=rs.getInt("maxid");
 		        n.setId(rs.getInt("maxid") + 1);
 	
 		        stmt = con.createStatement();
-		        // Jetzt erst erfolgt die tatsächliche Einfügeoperation
+		        // Jetzt erst erfolgt die tatsÃ¤chliche EinfÃ¼geoperation
 		        stmt.executeUpdate("INSERT INTO nutzer (nutzer_ID, vorname, name, email) "
 		            + "VALUES (" + n.getId() + ",'" + n.getVorname() + "','"
 		            + n.getName() + "','" + n.getEmail() +"')");
@@ -174,8 +176,56 @@ public class NutzerMapper {
 	}
 	
 	
+	
+	public Nutzer anmelden(String name, String passwort) throws Exception {
+		Connection con = DBConnection.connection();
+		Statement stmt = null;
+
+		System.out.println("Anfang von anmelden passwort: "+passwort+" und Nickname: "+name);
+		try {
+			 stmt = con.createStatement();
+
+			 ResultSet rs = stmt.executeQuery("SELECT * FROM `user` WHERE Nickname= '"+ name +"'" );
+			 
+			 System.out.println("UserMapper im Try");
+			if (rs.next()) {
+				Nutzer u = new Nutzer();
+				u.setId(rs.getInt("UserID"));
+				u.setVorname(rs.getString("Vorname"));
+				u.setName(rs.getString("Nachname"));
+				u.setPasswort(rs.getString("Passwort"));
+				u.setEmail(rs.getString("Email"));
+//				u.setErstellungsZeitpunkt(rs.getDate("ErstellungsZeitpunkt"));
+				
+				System.out.println("in dem ersten if Block passwort von DB: "+u.getPasswort()+" und passwort von Parameter: "+passwort);
+				if(u.getPasswort().equals(passwort)){
+					System.out.println("Passwort ist richtig...Passwort von DB " + u.getPasswort()+" Passswort von user: " + passwort );
+					return u;
+				
+				}else { 
+					System.out.println("Passwort ist falsch...Passwort von Datenbank: " +u.getPasswort());
+					return null;
+				}
+
+				// System.out.println("erster If User Mapper Name von User: "+ u.getNickname());
+			//	System.out.println("erster If User Mapper Passwort von User: "+u.getPasswort());
+				
+				//return u;
+			}
+		} catch (SQLException e2) {
+			e2.printStackTrace();
+			throw new Exception("Datenbank fehler!" + e2.toString());
+		} 
+//		Nur benï¿½tzen, wenn man mit Google SQL Cloud verbidet!!!
+//		finally {
+//			DBVerbindung.closeAll(rs, stmt, con);
+//		}
+
+		return null;
+	}
+	
 	/*
-	* @see 		deleteNutzer(Nutzer n): Löscht Nutzer aus der Datenbank
+	* @see 		deleteNutzer(Nutzer n): LÃ¶scht Nutzer aus der Datenbank
 	* @param 	Nutzerobjekt
 	* @return 	-
 	*/ 
@@ -186,7 +236,7 @@ public class NutzerMapper {
 		//Versuch der Abfrage
 	    try {
 	      Statement stmt = con.createStatement();
-	      //Lösche Nutzer aus Tabelle mit gleicher ID
+	      //LÃ¶sche Nutzer aus Tabelle mit gleicher ID
 	      stmt.executeUpdate("DELETE FROM nutzer WHERE nutzer_ID=" + n.getId());
 	    }
 	    catch (SQLException e) {
@@ -217,7 +267,7 @@ public class NutzerMapper {
 	      e.printStackTrace();
 	    }
 
-	    // Zurückgeben des aktuellen Nutzerobjektes
+	    // ZurÃ¼ckgeben des aktuellen Nutzerobjektes
 	    return getNutzerById(n.getId());
 	}
 	 

@@ -22,6 +22,17 @@ public interface FahrtenbuchAdministration extends RemoteService {
 	
 	public Nutzer insertNutzer (Nutzer n) throws IllegalArgumentException;
 	
+	/**
+	 * Nutzer meldet sich an
+	 * @param name, passwort
+	 * @return Nutzer
+	 * @throws IllegalArgumentException
+	 * 
+	 */
+	
+	public Nutzer anmelden(String name, String passwort) throws IllegalArgumentException;
+	
+	
 	/** 
 	 * Einen Nutzer aktualisieren
 	 * @param n Nutzer
