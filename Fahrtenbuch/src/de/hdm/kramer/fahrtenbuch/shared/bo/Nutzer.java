@@ -1,5 +1,6 @@
 package de.hdm.kramer.fahrtenbuch.shared.bo;
 
+import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.rpc.IsSerializable;
 
 /**
@@ -34,7 +35,12 @@ public class Nutzer extends BusinessObject implements IsSerializable {
 	 */
 		private Pkw pkw;
 	
+		/**
+		 *  Passwort eines Nutzers. 
+		 */
 	
+		private String passwort;
+		
 	/**
 	 * 
 	 * Auslesen des Vornamens 
@@ -124,13 +130,47 @@ public class Nutzer extends BusinessObject implements IsSerializable {
 			
 		};
 		
-	 	public Nutzer (String vorname, String nachname, String email){
+	 	public Nutzer (String vorname, String nachname, String email, String passwort){
 	 		this.vorname=vorname;
 	 		this.name= nachname;
 	 		this.email=email;
+	 		this.passwort=passwort;
 	 	}
 	 	
 	 	// Für den Mapper beim Auslesen aus der Datenbank, da id und erstellungsZeitpunkt von DB vergeben werden
 
 		
+	 	
+	 	/** 
+		 * Auslesen des Passworts.
+		 * @return
+		 */
+
+		public String getPasswort() {
+			return passwort;
+		}
+
+		/**
+		 * Setzen des Passworts.
+		 * @param passwort
+		 */
+
+		public void setPasswort(String passwort) {
+			this.passwort = passwort;
+		}
+		
+		
+		/**
+		 * User Attribute auf null setzen und Cookies entfernen beim ausloggen.
+		 */
+		public void abmelden(){
+			vorname = null;
+			name = null;
+			email = null;
+			passwort = null;
+			
+
+			Cookies.removeCookie("Fb");
+		}
+			
 }
