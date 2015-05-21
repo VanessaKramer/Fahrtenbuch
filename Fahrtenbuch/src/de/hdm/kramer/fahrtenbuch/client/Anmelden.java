@@ -1,10 +1,6 @@
 package de.hdm.kramer.fahrtenbuch.client;
 
 
-/**
- * 
- * Die Klasse Anmelden erh�lt das Formular Anmelden. Der User kann sich hier registrieren oder mit seinem bereits bestehenden Konto einloggen.
- */
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
