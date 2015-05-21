@@ -55,7 +55,7 @@ public class FahrtenbuchFrontend extends Composite {
 				mainPanel.clear();
 				RootPanel.get("Details").clear();
 				RootPanel.get("Details").add(mainPanel);
-				Report rep = new Report();
+				FahrtenReportPanel rep = new FahrtenReportPanel();
 				mainPanel.add(rep);
 			}
 		};
