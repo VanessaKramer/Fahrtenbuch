@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
-import de.hdm.kramer.fahrtenbuch.client.User;
+//import de.hdm.kramer.fahrtenbuch.client.User;
 import de.hdm.kramer.fahrtenbuch.shared.bo.Fahrt;
 import de.hdm.kramer.fahrtenbuch.shared.bo.Fahrtenbuch;
 import de.hdm.kramer.fahrtenbuch.shared.bo.Nutzer;

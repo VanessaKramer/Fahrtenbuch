@@ -4,15 +4,6 @@ import java.util.ArrayList;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
-
-
-
-
-
-
-
-
-
 import de.hdm.kramer.fahrtenbuch.server.db.FahrtMapper;
 import de.hdm.kramer.fahrtenbuch.server.db.FahrtenbuchMapper;
 import de.hdm.kramer.fahrtenbuch.server.db.NutzerMapper;
@@ -64,30 +55,32 @@ public class FahrtenbuchAdministrationImpl extends RemoteServiceServlet implemen
 		pkwMapper = PkwMapper.pkwMapper();
 		
 	}
+	
+	@Override
+	public Nutzer anmelden(String email, String passwort) throws IllegalArgumentException {
+		return this.nutzerMapper.anmelden(email, passwort);
+	}
+	
 	@Override
 	public Nutzer insertNutzer(Nutzer n) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public Nutzer updateNutzer(Nutzer n) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public void deleteNutzer(Nutzer n) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
+		return this.nutzerMapper.insertNutzer(n);
 		
 	}
 	@Override
+	public Nutzer updateNutzer(Nutzer n) throws IllegalArgumentException {
+		return this.nutzerMapper.updateNutzer(n);
+	}
+	@Override
+	public void deleteNutzer(Nutzer n) throws IllegalArgumentException {
+		nutzerMapper.deleteNutzer(n);
+	}
+	@Override
 	public Nutzer getNutzerById(int id) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
-		return null;
+		return this.nutzerMapper.getNutzerById(id);
 	}
 	@Override
 	public ArrayList<Nutzer> getAllNutzer() throws IllegalArgumentException {
-		// TODO Auto-generated method stub
-		return null;
+		return this.nutzerMapper.getAllNutzer();
 	}
 	@Override
 	public Fahrtenbuch insertFahrtenbuch(Fahrtenbuch fb)

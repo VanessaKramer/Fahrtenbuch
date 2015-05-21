@@ -27,6 +27,7 @@ public interface FahrtenbuchAdministration extends RemoteService {
 	 * @param name, passwort
 	 * @return Nutzer
 	 * @throws IllegalArgumentException
+	 * @throws  
 	 * 
 	 */
 	

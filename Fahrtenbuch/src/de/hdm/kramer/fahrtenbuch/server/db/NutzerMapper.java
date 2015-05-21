@@ -3,8 +3,6 @@ package de.hdm.kramer.fahrtenbuch.server.db;
 import java.sql.*;
 import java.util.ArrayList;
 
-import de.hdm.gruppe6.itprojekt.server.db.DBVerbindung;
-import de.hdm.gruppe6.itprojekt.shared.bo.User;
 import de.hdm.kramer.fahrtenbuch.shared.*;
 import de.hdm.kramer.fahrtenbuch.shared.bo.Nutzer;
 import de.hdm.kramer.fahrtenbuch.shared.bo.Fahrtenbuch;
@@ -177,15 +175,15 @@ public class NutzerMapper {
 	
 	
 	
-	public Nutzer anmelden(String name, String passwort) throws Exception {
+	public Nutzer anmelden(String email, String passwort) {
 		Connection con = DBConnection.connection();
 		Statement stmt = null;
 
-		System.out.println("Anfang von anmelden passwort: "+passwort+" und Nickname: "+name);
+		System.out.println("Anfang von anmelden passwort: "+passwort+" und email: "+email);
 		try {
 			 stmt = con.createStatement();
 
-			 ResultSet rs = stmt.executeQuery("SELECT * FROM `user` WHERE Nickname= '"+ name +"'" );
+			 ResultSet rs = stmt.executeQuery("SELECT * FROM `user` WHERE Nickname= '"+ email +"'" );
 			 
 			 System.out.println("UserMapper im Try");
 			if (rs.next()) {
@@ -195,7 +193,7 @@ public class NutzerMapper {
 				u.setName(rs.getString("Nachname"));
 				u.setPasswort(rs.getString("Passwort"));
 				u.setEmail(rs.getString("Email"));
-//				u.setErstellungsZeitpunkt(rs.getDate("ErstellungsZeitpunkt"));
+				u.setErstellungsZeitpunkt(rs.getDate("ErstellungsZeitpunkt"));	
 				
 				System.out.println("in dem ersten if Block passwort von DB: "+u.getPasswort()+" und passwort von Parameter: "+passwort);
 				if(u.getPasswort().equals(passwort)){
@@ -214,7 +212,7 @@ public class NutzerMapper {
 			}
 		} catch (SQLException e2) {
 			e2.printStackTrace();
-			throw new Exception("Datenbank fehler!" + e2.toString());
+			//throw new Exception("Datenbank fehler!" + e2.toString());
 		} 
 //		Nur ben�tzen, wenn man mit Google SQL Cloud verbidet!!!
 //		finally {
