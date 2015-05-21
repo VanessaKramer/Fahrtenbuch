@@ -2,8 +2,7 @@ package de.hdm.kramer.fahrtenbuch.client;
 
 
 /**
- * @author Bharti Kumar, �zlem G�l, Michael Schelkle, Andreas Sakulidis, Gezim Krasniqi, Ezgi Demirbilek
- *
+ * 
  * Die Klasse Anmelden erh�lt das Formular Anmelden. Der User kann sich hier registrieren oder mit seinem bereits bestehenden Konto einloggen.
  */
 import com.google.gwt.core.shared.GWT;
