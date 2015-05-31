@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
+
+
+
 //import de.hdm.kramer.fahrtenbuch.client.User;
 import de.hdm.kramer.fahrtenbuch.shared.bo.Fahrt;
 import de.hdm.kramer.fahrtenbuch.shared.bo.Fahrtenbuch;
@@ -42,9 +45,12 @@ public interface FahrtenbuchAdministrationAsync {
 
 	void updateFahrt(Fahrt f, AsyncCallback<Fahrt> callback);
 
-	void updateNutzer(Nutzer n, AsyncCallback<Nutzer> callback);
-
 	void anmelden(String name, String passwort, AsyncCallback<Nutzer> callback);
+
+	void updateNutzer(int uid, String vorname, String nachname, String email,
+			String passwort, AsyncCallback<Nutzer> asyncCallback);
+
+	
 
 	
 

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
+
 import de.hdm.kramer.fahrtenbuch.server.db.FahrtMapper;
 import de.hdm.kramer.fahrtenbuch.server.db.FahrtenbuchMapper;
 import de.hdm.kramer.fahrtenbuch.server.db.NutzerMapper;
@@ -70,7 +71,16 @@ public class FahrtenbuchAdministrationImpl extends RemoteServiceServlet implemen
 		
 	}
 	@Override
-	public Nutzer updateNutzer(Nutzer n) throws IllegalArgumentException {
+	public Nutzer updateNutzer(int id, String vorname, String nachname,
+			 String email, String passwort) throws IllegalArgumentException {
+		
+		Nutzer n = new Nutzer();
+		n.setId(id);
+		n.setVorname(vorname);
+		n.setName(nachname);
+		n.setEmail(email);
+		n.setPasswort(passwort);
+
 		return this.nutzerMapper.updateNutzer(n);
 	}
 	@Override
@@ -141,6 +151,7 @@ public class FahrtenbuchAdministrationImpl extends RemoteServiceServlet implemen
 		
 		return this.pkwMapper.getAllPkws();
 	}
+	
 	
 	
 

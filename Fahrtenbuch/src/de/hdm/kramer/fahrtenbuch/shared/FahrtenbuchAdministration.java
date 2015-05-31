@@ -41,8 +41,9 @@ public interface FahrtenbuchAdministration extends RemoteService {
 	 * @throws IllegalArgumentException 
 	 */
 	
-	public Nutzer updateNutzer (Nutzer n) throws IllegalArgumentException;
-	
+	public Nutzer updateNutzer (int id, String vorname,
+			String nachname,String email, String passwort) throws IllegalArgumentException;
+
 	/**
 	 *  Einen Nutzer löschen
 	 * @param Nutzer n
@@ -156,6 +157,8 @@ public interface FahrtenbuchAdministration extends RemoteService {
 	 */
 
 	public ArrayList <Pkw> getAllPkws() throws IllegalArgumentException;
+
+	
 
 
 

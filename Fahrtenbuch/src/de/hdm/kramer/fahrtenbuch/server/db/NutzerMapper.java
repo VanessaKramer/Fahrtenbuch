@@ -159,7 +159,8 @@ public class NutzerMapper {
 		        // Jetzt erst erfolgt die tatsächliche Einfügeoperation
 		        stmt.executeUpdate("INSERT INTO nutzer (nutzer_ID, vorname, name, email, passwort) "
 		            + "VALUES (" + n.getId() + ",'" + n.getVorname() + "','"
-		            + n.getName() + "','" + n.getEmail() + "','" + n.getPasswort() +"')");
+		            + n.getName() + "','" + n.getEmail() +"','"
+				            + n.getPasswort() +"')");
 	      	}
 	    }
 		
@@ -243,6 +244,8 @@ public class NutzerMapper {
 	}
 	
 	
+	
+	
 	/*
 	* @see		updateNutzer(Nutzwr n): Aktualisiert Nutzerinformationen in der Datenbank
 	* @param	zu aktualisierendes Nutzerobjekt
@@ -258,7 +261,7 @@ public class NutzerMapper {
 	      //Aktualisieren des Vornamens, Nachnamens und der Email
 	      stmt.executeUpdate("UPDATE nutzer " + "SET vorname= \"" 
 	          + n.getVorname() + "\", " + "name=\"" + n.getName() + "\", " + "email= \"" + n.getEmail() + 
-	          "\"" + "WHERE nutzer_ID=" + n.getId());
+	          "\" + " + "passwort=\"" + n.getPasswort() + "\""  +   "WHERE nutzer_ID=" + n.getId());
 
 	    }
 	    catch (SQLException e) {
@@ -268,5 +271,10 @@ public class NutzerMapper {
 	    // Zurückgeben des aktuellen Nutzerobjektes
 	    return getNutzerById(n.getId());
 	}
-	 
+
+
+
+
+
+
 }
