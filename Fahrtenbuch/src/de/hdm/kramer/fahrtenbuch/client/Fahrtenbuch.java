@@ -20,17 +20,18 @@ public class Fahrtenbuch implements EntryPoint {
 
 	public void onModuleLoad() {
 
-		try{
-		String cookie=Cookies.getCookie("Fb");
-		System.out.println("On Module Load cookie: "+cookie);
-		if(!cookie.equals(null)){
-//			
+//		try{
+//		String cookie=Cookies.getCookie("Fb");
+//		System.out.println("On Module Load cookie: "+cookie);
+//		
+//		if(!cookie.equals(null)){
+			
 		an.angemeldet();
-		}
-
-		}
-		catch(Exception e){
-			a.anmelden();
+//		}
+//
+//		}
+//		catch(Exception e){
+//			a.anmelden();
 			
 			
 
@@ -41,4 +42,4 @@ public class Fahrtenbuch implements EntryPoint {
 		
 
 	
-}
+//}

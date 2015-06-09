@@ -110,7 +110,7 @@ public class FahrtenbuchFrontend extends Composite {
 
 
 		MenuBar menu = new MenuBar();
-		menu.addItem("Pinnwand", fahrtenbuchMenu);
+		menu.addItem("Fahrtenbuch", fahrtenbuchMenu);
 		menu.addItem("Reports", reportMenu);
 		menu.addItem("Mein Profil", bearb);
 		menu.addItem("LogOut", logout);

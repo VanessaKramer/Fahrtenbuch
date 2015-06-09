@@ -31,7 +31,7 @@ public interface FahrtenbuchAdministration extends RemoteService {
 	 * 
 	 */
 	
-	public Nutzer anmelden(String name, String passwort) throws Exception;
+	public Nutzer anmelden(String email, String passwort) throws Exception;
 	
 	
 	/** 

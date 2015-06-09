@@ -31,6 +31,7 @@ public class Anmelden {
 
 	private HorizontalPanel hPanel = new HorizontalPanel();
 	private TextBox textName = new TextBox();
+	private Label lbEmail = new Label("Email:");
 	private Label lbPasswort = new Label("Passwort : ");
 	private PasswordTextBox tbPasswort = new PasswordTextBox();
 	private Button loginButton = new Button("Anmelden");
@@ -45,12 +46,12 @@ static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
 
 	public Widget anmelden() {
 
-//		hinweis.addStyleName("hinweis");
 
 		/**
 		 * Die Widgets f�r die Anmeldung werden dem loginPanel hinzugef�gt.
 		 */
-
+		
+		hPanel.add(lbEmail);
 		hPanel.add(textName);
 
 		hPanel.add(lbPasswort);
@@ -86,10 +87,10 @@ static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
 			        try{
 			        if (result.getId() != 0) {
 
-			         Cookies.setCookie("Fb",
-			           result.getEmail());
-			         Cookies.setCookie("FbID",
-			           String.valueOf(result.getId()));
+//			        Cookies.setCookie("Fb",
+//			        result.getEmail());
+//			        Cookies.setCookie("FbID",
+//			        String.valueOf(result.getId()));
 
 			         RootPanel.get("Details").clear();
 			         textName.setVisible(false);

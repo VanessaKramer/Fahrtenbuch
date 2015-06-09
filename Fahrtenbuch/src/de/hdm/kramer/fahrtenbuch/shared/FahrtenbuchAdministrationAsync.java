@@ -44,7 +44,7 @@ public interface FahrtenbuchAdministrationAsync {
 
 	void updateNutzer(Nutzer n, AsyncCallback<Nutzer> callback);
 
-	void anmelden(String name, String passwort, AsyncCallback<Nutzer> callback);
+	void anmelden(String email, String passwort, AsyncCallback<Nutzer> callback);
 
 	
 
