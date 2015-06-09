@@ -5,7 +5,8 @@ import com.google.gwt.user.client.Cookies;
 /**
  * 
  * 
- * Die Klasse SocialMediaPinnwandSystem06 ist die EntryPointKlasse die die Methode onModuleLoad enthält.
+ * Die Klasse Fahrtenbuch ist die EntryPointKlasse die die Methode onModuleLoad enthält.
+ * Die Klasse wird beim Start des Programs als erstes geladen.
 */
 
 

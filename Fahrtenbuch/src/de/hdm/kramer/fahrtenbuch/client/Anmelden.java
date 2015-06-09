@@ -3,7 +3,7 @@ package de.hdm.kramer.fahrtenbuch.client;
 
 /**
  * 
- * Die Klasse Anmelden erh�lt das Formular Anmelden. Der User kann sich hier registrieren oder mit seinem bereits bestehenden Konto einloggen.
+ * Die Klasse Anmelden erh�lt das Formular Anmelden. Der User kann sich hier mit seinem bereits bestehenden Konto einloggen.
  */
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -29,12 +29,12 @@ public class Anmelden {
 	 * Hier werden die Panels und die Widgets f�r die Anmeldung festgelegt.
 	 */
 
-	//private HorizontalPanel hPanel = new HorizontalPanel();
+	private HorizontalPanel hPanel = new HorizontalPanel();
 	private TextBox textName = new TextBox();
 	private Label lbPasswort = new Label("Passwort : ");
 	private PasswordTextBox tbPasswort = new PasswordTextBox();
 	private Button loginButton = new Button("Anmelden");
-	private HorizontalPanel hPanel = new HorizontalPanel();
+
 
 
  private FahrtenbuchAdministrationAsync fahrtenbuch = GWT
@@ -74,7 +74,7 @@ static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
 
 			       @Override
 			       public void onFailure(Throwable caught) {
-			        Window.alert("Ein fehler ist aufgetreten: "
+			        Window.alert("Ein Fehler ist aufgetreten: "
 			          + caught.getMessage());
 
 			       }

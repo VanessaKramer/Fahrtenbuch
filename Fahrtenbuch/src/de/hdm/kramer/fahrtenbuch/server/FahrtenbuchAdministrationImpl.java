@@ -39,6 +39,7 @@ public class FahrtenbuchAdministrationImpl extends RemoteServiceServlet implemen
 	 */
 
 	private PkwMapper pkwMapper = null;
+	
 
 	public FahrtenbuchAdministrationImpl() throws IllegalArgumentException {
 	
@@ -56,8 +57,10 @@ public class FahrtenbuchAdministrationImpl extends RemoteServiceServlet implemen
 		
 	}
 	
+	
+	
 	@Override
-	public Nutzer anmelden(String email, String passwort) throws IllegalArgumentException {
+	public Nutzer anmelden(String email, String passwort) throws Exception {
 		return this.nutzerMapper.anmelden(email, passwort);
 	}
 	

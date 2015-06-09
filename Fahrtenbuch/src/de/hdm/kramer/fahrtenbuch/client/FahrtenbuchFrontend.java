@@ -40,7 +40,7 @@ public class FahrtenbuchFrontend extends Composite {
 	private VerticalPanel mainPanel = new VerticalPanel();
 	private VerticalPanel suchePanel = new VerticalPanel();
 	private TextBox tbName = new TextBox();
-	private FahrtenbuchAdministrationAsync fb = GWT.create(FahrtenbuchAdministration.class);
+	//private FahrtenbuchAdministrationAsync fahrtenbuch = GWT.create(FahrtenbuchAdministration.class);
 
 
 	static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
@@ -102,7 +102,7 @@ public class FahrtenbuchFrontend extends Composite {
 				mainPanel.clear();
 				RootPanel.get("Details").clear();
 				RootPanel.get("Details").add(mainPanel);
-				NutzerBearbeiten nB = new NutzerBearbeiten();
+			//	NutzerBearbeiten nB = new NutzerBearbeiten();
 			//	mainPanel.add(nB.bearbeiteProfil());
 
 			}

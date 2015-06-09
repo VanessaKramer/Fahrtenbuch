@@ -15,6 +15,7 @@ import de.hdm.kramer.fahrtenbuch.shared.bo.Fahrtenbuch;
  * insertNutzer(Nutzer n)
  * deleteNutzer(Nutzer n)
  * updateNutzer(Nutzer n)
+ * anmelden(String email, String passwort)
  */
 
 public class NutzerMapper {
@@ -156,9 +157,9 @@ public class NutzerMapper {
 	
 		        stmt = con.createStatement();
 		        // Jetzt erst erfolgt die tatsächliche Einfügeoperation
-		        stmt.executeUpdate("INSERT INTO nutzer (nutzer_ID, vorname, name, email) "
+		        stmt.executeUpdate("INSERT INTO nutzer (nutzer_ID, vorname, name, email, passwort) "
 		            + "VALUES (" + n.getId() + ",'" + n.getVorname() + "','"
-		            + n.getName() + "','" + n.getEmail() +"')");
+		            + n.getName() + "','" + n.getEmail() + "','" + n.getPasswort() +"')");
 	      	}
 	    }
 		
@@ -175,44 +176,43 @@ public class NutzerMapper {
 	
 	
 	
-	public Nutzer anmelden(String email, String passwort) {
+	public Nutzer anmelden(String email, String passwort) throws Exception {
 		Connection con = DBConnection.connection();
 		Statement stmt = null;
 
-		System.out.println("Anfang von anmelden passwort: "+passwort+" und email: "+email);
 		try {
 			 stmt = con.createStatement();
 
-			 ResultSet rs = stmt.executeQuery("SELECT * FROM `user` WHERE Nickname= '"+ email +"'" );
+			 ResultSet rs = stmt.executeQuery("SELECT * FROM nutzer WHERE email="+ email );
 			 
-			 System.out.println("UserMapper im Try");
+			 //System.out.println("User in Try");
 			if (rs.next()) {
-				Nutzer u = new Nutzer();
-				u.setId(rs.getInt("UserID"));
-				u.setVorname(rs.getString("Vorname"));
-				u.setName(rs.getString("Nachname"));
-				u.setPasswort(rs.getString("Passwort"));
-				u.setEmail(rs.getString("Email"));
-				u.setErstellungsZeitpunkt(rs.getDate("ErstellungsZeitpunkt"));	
+				Nutzer n = new Nutzer();
+				n.setId(rs.getInt("nutzer_ID"));
+				n.setVorname(rs.getString("vorname"));
+				n.setName(rs.getString("name"));
+				n.setPasswort(rs.getString("passwort"));
+				n.setEmail(rs.getString("email"));
+				n.setErstellungsZeitpunkt(rs.getDate("erstellung"));
 				
-				System.out.println("in dem ersten if Block passwort von DB: "+u.getPasswort()+" und passwort von Parameter: "+passwort);
-				if(u.getPasswort().equals(passwort)){
-					System.out.println("Passwort ist richtig...Passwort von DB " + u.getPasswort()+" Passswort von user: " + passwort );
-					return u;
+				//System.out.println("in dem ersten if Block passwort von DB: "+n.getPasswort()+" und passwort von Parameter: "+passwort);
+				if(n.getPasswort().equals(passwort)){
+					//System.out.println("Passwort ist richtig...Passwort von DB " + n.getPasswort()+" Passswort von user: " + passwort );
+					return n;
 				
 				}else { 
-					System.out.println("Passwort ist falsch...Passwort von Datenbank: " +u.getPasswort());
+					//System.out.println("Passwort ist falsch...Passwort von Datenbank: " +n.getPasswort());
 					return null;
 				}
 
-				// System.out.println("erster If User Mapper Name von User: "+ u.getNickname());
-			//	System.out.println("erster If User Mapper Passwort von User: "+u.getPasswort());
+				// System.out.println("erster If User Mapper Name von User: "+ n.getNickname());
+			//	System.out.println("erster If User Mapper Passwort von User: "+n.getPasswort());
 				
-				//return u;
+				//return n;
 			}
 		} catch (SQLException e2) {
 			e2.printStackTrace();
-			//throw new Exception("Datenbank fehler!" + e2.toString());
+			throw new Exception("Datenbank fehler!" + e2.toString());
 		} 
 //		Nur ben�tzen, wenn man mit Google SQL Cloud verbidet!!!
 //		finally {

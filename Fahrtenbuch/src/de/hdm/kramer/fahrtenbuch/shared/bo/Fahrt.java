@@ -1,8 +1,7 @@
 package de.hdm.kramer.fahrtenbuch.shared.bo;
 
-import java.sql.Date;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
@@ -34,11 +33,6 @@ public class Fahrt extends BusinessObject implements IsSerializable, Comparable<
 	*/
 	private Fahrtenbuch fahrtenbuch;
 	
-	/**
-	* Datumsformatierung mit SimpleDateFormat, um das Datum und die Uhrzeit für
-	* die Abfahrtzeit und Ankunftszeit auszugeben.
-	*/
-	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
 	
 	/**
 	 * Die Abfahrtszeit der Fahrt
@@ -241,17 +235,23 @@ public class Fahrt extends BusinessObject implements IsSerializable, Comparable<
 	 */
 	@Override
 	public String toString() {
-		String abZeit = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(abfahrtsZeit);
-		String anZeit = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(ankunftsZeit);
+		
+			// Use SimpleDateFormat 
+		
+		//String abZeit = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(abfahrtsZeit);
+		//String anZeit = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(ankunftsZeit);
+		
+		String abZeit = this.abfahrtsZeit.toString();
+		String anZeit = this.ankunftsZeit.toString();
+		
 		return "Erstellungszeitpunkt" + getErstellungsZeitpunkt() + "Fahrer" + this.nutzer +
-				"PKW"+ this.pkw.getModellName() + 
-				"Abfahrtszeit" + abZeit + "Ankunftszeit" + anZeit +
+				"PKW"+ this.pkw.getModellName() + "Abfahrtszeit" + abZeit + "Ankunftszeit" + anZeit +
 				"Abfahrtsort" + this.abfahrtsOrt + "Ankunftsort" + this.ankunftsOrt +
 				"Fahrtzweck" + this.fahrtZweck + "km-Stand Anfang" + this.kmStandAnfang + "km-Stand Ende" + this.kmStandEnde;
-	}
 
+	}
 	
-	
+
 	/**
 	 * Notwendig um Arraylisten ordnen zu können
 	 * Regulär würden Fahrten von ältestem zu neuestem geordnet werden, daher umdrehen der Rückgabewerte
