@@ -23,7 +23,6 @@
   <entry-point
 		class='de.hdm.kramer.fahrtenbuch.client.Fahrtenbuch' />
   
-  
   <!-- Specify the paths for translatable code                    -->
   <source path='client' />
   <source path='shared' />

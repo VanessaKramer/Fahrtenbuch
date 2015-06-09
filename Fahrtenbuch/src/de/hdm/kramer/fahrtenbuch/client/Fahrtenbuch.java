@@ -19,6 +19,7 @@ public class Fahrtenbuch implements EntryPoint {
 
 
 	public void onModuleLoad() {
+		
 
 		try{
 		String cookie=Cookies.getCookie("Fb");
