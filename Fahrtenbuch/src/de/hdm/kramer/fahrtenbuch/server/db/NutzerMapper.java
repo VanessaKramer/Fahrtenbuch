@@ -161,6 +161,7 @@ public class NutzerMapper {
 		            + "VALUES (" + n.getId() + ",'" + n.getVorname() + "','"
 		            + n.getName() + "','" + n.getEmail() +"','"
 				            + n.getPasswort() +"')");
+
 	      	}
 	    }
 		

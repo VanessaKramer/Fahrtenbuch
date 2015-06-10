@@ -20,6 +20,7 @@
   <!-- Other module inherits                                      -->
 
   <!-- Specify the app entry point class.                         -->
+
   <entry-point
 		class='de.hdm.kramer.fahrtenbuch.client.Fahrtenbuch' />
   
